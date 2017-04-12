@@ -1,4 +1,4 @@
-package nutriscope.ndb.elasticbulk;
+package nutriscope.ndb.elastic;
 
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestClientFactory;
@@ -14,9 +14,6 @@ public class upload {
 
 
     public static void main(String[] args) throws Exception {
-
-
-
 
 
         JestClientFactory factory = new JestClientFactory();
