@@ -15,12 +15,14 @@ import java.util.List;
 /**
  *  Downloads required data files for bulk processing to Elasticsearch.
  */
-public class setup {
+public class Setup {
+
+    public static String outputPath = "data/";
 
     public static void main(String[] args) throws Exception {
 
         // Path for data storage
-        String outputPath = "data/";
+
 
         // List of data files
         List<String> files = Lists.newArrayList(
