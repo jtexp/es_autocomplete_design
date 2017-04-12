@@ -6,3 +6,38 @@
 4. Create elasticsearch-cred.json as shown in [elastic.md](src/main/java/nutriscope/ndb/elastic/elastic.md)
 5. Run Setup.main in order to download the data files we will use.
 6. Run Upload.main in order to upload the bulk SimpleFood to ES
+
+
+
+```$json
+PUT /ndb2
+{
+	"mappings": {
+		"food": {
+			"properties": {
+				"suggest": {
+					"type": "completion"
+				},
+				"name": {"type": "keyword"},
+				"ndbid": {"type": "text"}
+			}
+		}
+	}
+}
+
+```
+
+```$json
+POST /ndb2/_search?pretty
+{
+    "suggest": {
+      "food-suggest": {
+        "prefix": "Che",
+        "completion": {
+          "field": "suggest"
+      }
+    }
+  }
+}
+
+```
