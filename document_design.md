@@ -18,3 +18,8 @@
     "mfg": "Namaste Foods",
     "upc": 851083005064
 }
+
+data: 
+
+https://s3.amazonaws.com/nutriscopedata/ndbid-mfgorfoodgroup.tsv
+https://s3.amazonaws.com/nutriscopedata/ndbid-name.tsv
