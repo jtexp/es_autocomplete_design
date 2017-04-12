@@ -36,13 +36,13 @@ public class Upload {
 
         for (int i = 0; i < 100; i++) {
             line = reader.readNext();
-            simpleFoods.add(new SimpleFood(line[0], line[1]));
+            simpleFoods.add(new SimpleFood(line[0], line[1], new SimpleFood.Suggest_(line[1])));
 
 
         }
 
         for (SimpleFood food: simpleFoods) {
-            actions.add(new Index.Builder(food).index("ndb").type("food").build());
+            actions.add(new Index.Builder(food).index("ndb2").type("food").build());
 
         }
 
@@ -61,7 +61,7 @@ public class Upload {
 //        Settings settings = Settings.builder().put("cluster.name", "841821909397:ndb").build();
 
         Bulk bulk = new Bulk.Builder()
-                .defaultIndex("ndb")
+                .defaultIndex("ndb2")
                 .defaultType("food")
                 .addAction(actions)
                 .build();
@@ -85,11 +85,19 @@ public class Upload {
 }
 
 class SimpleFood{
-    public SimpleFood(String ndbId, String name) {
+    public SimpleFood(String ndbId, String name, Suggest_ suggest) {
         this.ndbId = ndbId;
         this.name = name;
+        this.suggest = suggest;
     }
     @JestId
     String ndbId;
     String name;
+    Suggest_ suggest;
+    static class Suggest_{
+        Suggest_(String input){
+            this.input = input;
+        }
+        String input;
+    }
 }
